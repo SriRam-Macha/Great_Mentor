@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:great_mentor/LoginPage.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'loginpage.dart';
 
@@ -20,7 +19,8 @@ class _SplashscreenState extends State<Splashscreen> {
       loaderColor: Color(0xFF6D17CB),
       image: Image.asset(
         'assets/mentorship.png',
-        height: 800,
+        height: 3000,
+        width: 3000,
       ),
     );
   }
