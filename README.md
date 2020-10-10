@@ -1,6 +1,6 @@
-# great_mentor
+# Great_mentor
 
-A new Flutter application.
+A new Flutter application
 
 ## Getting Started
 
