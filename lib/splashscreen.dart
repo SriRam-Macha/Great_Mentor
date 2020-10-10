@@ -11,17 +11,19 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-      seconds: 5,
-      gradientBackground: LinearGradient(
-          begin: Alignment.topLeft,
-          colors: [new Color(0xFF6D17CB), new Color(0xFF2876F9)]),
-      navigateAfterSeconds: LoginPage(),
-      loaderColor: Color(0xFF6D17CB),
-      image: Image.asset(
-        'assets/mentorship.png',
-        height: 3000,
-        width: 3000,
-      ),
-    );
+        photoSize: 100,
+        seconds: 5,
+        gradientBackground: LinearGradient(
+            begin: Alignment.topLeft,
+            colors: [new Color(0xFF6D17CB), new Color(0xFF2876F9)]),
+        navigateAfterSeconds: LoginPage(),
+        loaderColor: Color(0xFF6D17CB),
+        image: Image.asset(
+          'assets/mentorship.png',
+        ),
+        title: Text(
+          "Great Mentor",
+          style: TextStyle(fontSize: 30),
+        ));
   }
 }
