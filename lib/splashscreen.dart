@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'loginpage.dart';
+import 'wrapper.dart';
 
 class Splashscreen extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _SplashscreenState extends State<Splashscreen> {
         gradientBackground: LinearGradient(
             begin: Alignment.topLeft,
             colors: [new Color(0xFF6D17CB), new Color(0xFF2876F9)]),
-        navigateAfterSeconds: LoginPage(),
+        navigateAfterSeconds: Wrapper(),
         loaderColor: Color(0xFF6D17CB),
         image: Image.asset(
           'assets/mentorship.png',
@@ -27,3 +28,10 @@ class _SplashscreenState extends State<Splashscreen> {
         ));
   }
 }
+// Future<void> main() async {
+//       WidgetsFlutterBinding.ensureInitialized();
+//       SharedPreferences prefs = await SharedPreferences.getInstance();
+//       var email = prefs.getString('email');
+//       print(email);
+//       runApp(MaterialApp(home: email == null ? Login() : Home()));
+//     }

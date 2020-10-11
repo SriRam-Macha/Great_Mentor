@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'sign_in.dart';
+import 'homepage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -6,6 +9,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final Auth _auth = Auth();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,15 +31,7 @@ class _LoginPageState extends State<LoginPage> {
             child: OutlineButton(
               splashColor: Colors.grey,
               onPressed: () {
-                // signInWithGoogle().whenComplete(() {
-                //   Navigator.of(context).push(
-                //     MaterialPageRoute(
-                //       builder: (context) {
-                //         return RentInscren();
-                //         },
-                //       ),
-                //     );
-                //   });
+                _auth.signInWithGoogle();
               },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5)),
@@ -44,24 +40,23 @@ class _LoginPageState extends State<LoginPage> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image(
-                        image: AssetImage("assets/google_logo.png"),
-                        height: 35.0),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Text(
-                        'Sign in with Google',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.grey,
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image(
+                          image: AssetImage("assets/google_logo.png"),
+                          height: 35.0),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text(
+                          'Sign in with Google',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
-                    )
-                  ],
-                ),
+                    ]),
               ),
             ),
           ),

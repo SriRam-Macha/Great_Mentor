@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'splashscreen.dart';
+import 'package:provider/provider.dart';
+import 'sign_in.dart';
+import 'wrapper.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,14 +14,17 @@ class MyApp extends StatelessWidget {
     //     DeviceOrientation.portraitUp,
     //     DeviceOrientation.portraitDown,
     //   ]);
-    return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Color(0xFF6D17CB),
+    return StreamProvider<FirebaseUser>.value(
+      value: Auth().user,
+      child: MaterialApp(
+        theme: ThemeData(
+          primaryColor: Color(0xFF6D17CB),
+        ),
+        color: Color(0xFF6D17CB),
+        title: 'Flutter Login',
+        home: Wrapper(),
+        debugShowCheckedModeBanner: false,
       ),
-      color: Color(0xFF6D17CB),
-      title: 'Flutter Login',
-      home: Splashscreen(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
