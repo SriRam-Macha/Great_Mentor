@@ -14,9 +14,6 @@ class _SplashscreenState extends State<Splashscreen> {
     return SplashScreen(
         photoSize: 100,
         seconds: 5,
-        gradientBackground: LinearGradient(
-            begin: Alignment.topLeft,
-            colors: [new Color(0xFF6D17CB), new Color(0xFF2876F9)]),
         navigateAfterSeconds: Wrapper(),
         loaderColor: Color(0xFF6D17CB),
         image: Image.asset(

@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:great_mentor/homepage.dart';
 import 'package:provider/provider.dart';
 import 'loginpage.dart';
 import 'homepage.dart';
@@ -16,13 +15,13 @@ class Wrapper extends StatefulWidget {
 class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<FirebaseUser>(context);
+    final user = Provider.of<User>(context);
     print(user);
     if (user == null) {
       print("Navin");
       return LoginPage();
     } else {
-      return StreamProvider.value(value: Firestore.instance.collection('users').document(user.uid).snapshots(), child: Homepage());
+      return StreamProvider<DocumentSnapshot>.value(value: FirebaseFirestore.instance.collection('users').doc(user.uid).snapshots(), child: Homepage());
     }
   }
 }

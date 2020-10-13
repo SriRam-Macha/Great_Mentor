@@ -7,22 +7,30 @@ import 'database.dart';
 class Auth {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
-  final Firestore _firestore = Firestore.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<FirebaseUser> signInWithGoogle() async {
+  Future<User> signInWithGoogle() async {
     GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    print('done1');
     GoogleSignInAuthentication googleSignInAuthentication =
         await googleSignInAccount.authentication;
-
-    AuthCredential credential = GoogleAuthProvider.getCredential(
+    print('done1');
+    AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleSignInAuthentication.accessToken,
       idToken: googleSignInAuthentication.idToken,
     );
-
-    AuthResult authResult = await _auth.signInWithCredential(credential);
-    FirebaseUser user = authResult.user;
-    await DatabaseService(user.uid).updateStudentData();
-
+    print('done1');
+    UserCredential userCredential =
+        await _auth.signInWithCredential(credential);
+    User user = userCredential.user;
+    DocumentSnapshot data = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .get();
+  
+    if (!data.exists) {
+      await DatabaseService(uid :user.uid).updateStudentData();
+    }
     return user;
 
     // return 'signInWithGoogle succeeded: $user';
@@ -39,7 +47,7 @@ class Auth {
     }
   }
 
-  Stream<FirebaseUser> get user {
-    return _auth.onAuthStateChanged;
+  Stream<User> get user {
+    return _auth.authStateChanges();
   }
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:great_mentor/homepage.dart';
 import 'data.dart';
 import 'database.dart';
+import 'homepage.dart';
+
 
 class ProfilePage extends StatefulWidget {
   final String userid;
@@ -29,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
     print(_editedProfile.email);
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Homepage()));
-    DatabaseService(widget.userid).updateStudentData(
+    DatabaseService(uid: widget.userid).updateStudentData(
       name: _editedProfile.name,
       classname: _editedProfile.classname,
       email: _editedProfile.email,

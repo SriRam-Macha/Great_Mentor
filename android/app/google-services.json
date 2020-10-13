@@ -8,6 +8,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:849920297056:android:75165b23dfed4fdd6e5b05",
+        "android_client_info": {
+          "package_name": "com.example.graet_mentor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849920297056-lgglf0dt58odi9nlvjhrivtio3okvqkj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.graet_mentor",
+            "certificate_hash": "6d00c2b6dca9cdf7fbc4ebf46ad00842465d8dd5"
+          }
+        },
+        {
+          "client_id": "849920297056-6tka8efc07hjnhqvio75jvekj35oaje8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzGI-icSKjMBLu8wRjqqriox1mn5ZkdAQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849920297056-6tka8efc07hjnhqvio75jvekj35oaje8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:849920297056:android:faef4cfdc79130936e5b05",
         "android_client_info": {
           "package_name": "com.example.great_mentor"

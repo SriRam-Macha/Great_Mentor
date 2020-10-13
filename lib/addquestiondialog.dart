@@ -1,8 +1,5 @@
-// import 'package:finacash/Helper/Movimentacoes_helper.dart';
-// import 'package:finacash/screen/HomePage.dart';
-// import 'package:finacash/screen/InicialPage.dart';
 import 'package:flutter/material.dart';
-// import 'package:intl/intl.dart';
+import 'database.dart';
 
 class CustomDialog extends StatefulWidget {
   // final Movimentacoes mov;
@@ -16,9 +13,6 @@ class _CustomDialogState extends State<CustomDialog> {
   // var formatter = new DateFormat('dd-MM-yyyy');
   bool edit;
 
-  int _groupValueRadio = 1; //intial value of radio button i.e green
-  Color _colorContainer = Colors.green[400]; // intial background color
-  Color _colorTextButtom = Colors.green; // intial color of text // value
   TextEditingController _questioncontroller = TextEditingController();
   TextEditingController _descriptioncontroller = TextEditingController();
   TextEditingController _linkcontroller = TextEditingController();
@@ -30,23 +24,6 @@ class _CustomDialogState extends State<CustomDialog> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
-    // if(widget.mov != null){
-    //   print(widget.mov.toString());
-
-    //   edit = true;
-    //   if(widget.mov.tipo == "d"){
-    //     _groupValueRadio =2;
-    //     _colorContainer = Colors.red[300];
-    //     _colorTextButtom = Colors.red[300];
-    //     }
-
-    //   _controllerValor.text = widget.mov.valor.toString().replaceAll("-", "");
-    //   _controllerDesc.text = widget.mov.descricao;
-    // }else{
-    //   edit = false;
-    // }
-    // print(" edit -> $edit");
   }
 
   @override
@@ -76,6 +53,7 @@ class _CustomDialogState extends State<CustomDialog> {
                 children: <Widget>[
                   Flexible(
                     child: TextField(
+                        textCapitalization: TextCapitalization.words,
                         controller: _questioncontroller,
                         style: TextStyle(fontSize: width * 0.05),
                         keyboardType: TextInputType.text,
@@ -119,6 +97,7 @@ class _CustomDialogState extends State<CustomDialog> {
                 children: <Widget>[
                   Flexible(
                     child: TextField(
+                        textCapitalization: TextCapitalization.words,
                         controller: _descriptioncontroller,
                         style: TextStyle(fontSize: width * 0.05),
                         keyboardType: TextInputType.text,
@@ -166,7 +145,7 @@ class _CustomDialogState extends State<CustomDialog> {
                         style: TextStyle(fontSize: width * 0.05),
                         keyboardType: TextInputType.text,
                         maxLines: 1,
-                        textAlign: TextAlign.end,
+                        textAlign: TextAlign.left,
                         decoration: new InputDecoration(
                           hintStyle: TextStyle(color: Colors.white54),
                           contentPadding: EdgeInsets.only(
@@ -208,37 +187,11 @@ class _CustomDialogState extends State<CustomDialog> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //     builder: (context) =>
-                        //         Payment_page(amount: _pricecontroller.text)));
-
-                        // if(_controllerValor.text.isNotEmpty && _controllerDesc.text.isNotEmpty){
-                        //   Movimentacoes mov = Movimentacoes();
-                        //   String valor;
-                        //   if(_controllerValor.text.contains(",")){
-                        //      valor = _controllerValor.text.replaceAll( RegExp(","), ".");
-                        //     }else{
-                        //       valor = _controllerValor.text;
-                        //     }
-
-                        //   mov.data = formatter.format(DateTime.now());
-                        //   mov.descricao = _controllerDesc.text;
-
-                        //   if(_groupValueRadio == 1){
-
-                        //     mov.valor = double.parse(valor);
-                        //     mov.tipo ="r";
-                        //     if(widget.mov != null){ mov.id = widget.mov.id;}
-                        //     edit == false ? _movHelper.saveMovimentacao(mov) : _movHelper.updateMovimentacao(mov);
-                        //   }
-                        //   if(_groupValueRadio == 2){
-                        //     mov.valor = double.parse("-" + valor);
-                        //     mov.tipo ="d";
-                        //     if(widget.mov != null){ mov.id = widget.mov.id;}
-                        //     edit == false ? _movHelper.saveMovimentacao(mov) : _movHelper.updateMovimentacao(mov);
-                        //   }
-                        //   Navigator.pop(context);
-                        //   //initState();
+                        DatabaseService().updateQuestion(
+                            _questioncontroller.text,
+                            _descriptioncontroller.text,
+                            img: _linkcontroller.text);
+                        Navigator.pop(context);
                       },
                       child: Container(
                         padding: EdgeInsets.only(

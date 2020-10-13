@@ -1,11 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'splashscreen.dart';
 import 'package:provider/provider.dart';
 import 'sign_in.dart';
 import 'wrapper.dart';
 
-void main() => runApp(MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -14,7 +19,7 @@ class MyApp extends StatelessWidget {
     //     DeviceOrientation.portraitUp,
     //     DeviceOrientation.portraitDown,
     //   ]);
-    return StreamProvider<FirebaseUser>.value(
+    return StreamProvider<User>.value(
       value: Auth().user,
       child: MaterialApp(
         theme: ThemeData(

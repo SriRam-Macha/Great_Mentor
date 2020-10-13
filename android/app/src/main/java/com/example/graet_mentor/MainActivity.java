@@ -1,4 +1,4 @@
-package com.example.great_mentor;
+package com.example.graet_mentor;
 
 import io.flutter.embedding.android.FlutterActivity;
 
