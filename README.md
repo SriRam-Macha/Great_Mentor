@@ -1,4 +1,4 @@
-# Great_mentor
+# Greate_mentor
 
 A new Flutter application
 
