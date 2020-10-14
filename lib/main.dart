@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'splashscreen.dart';
+import 'Screens/splashscreen.dart';
 import 'package:provider/provider.dart';
-import 'sign_in.dart';
+import 'Screens/sign_in.dart';
 import 'wrapper.dart';
 
 void main() async{
