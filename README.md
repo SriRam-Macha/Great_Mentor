@@ -1,6 +1,9 @@
 # Great_mentor
 
-A new Flutter application
+Great- Mentor is a platform where students can post their doubts
+and mentors can solve their problems and give explanations via
+text chat and video call (which was built into the application itself
+using Agora).
 
 ## Getting Started
 
